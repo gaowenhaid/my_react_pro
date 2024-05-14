@@ -4,6 +4,7 @@ const User_2 = lazy(()=> import('../../views/user/user_2/index'))
 const User_3 = lazy(()=> import('../../views/user/user_3/index'))
 const User_4 = lazy(()=> import('../../views/user/user_4/index'))
 const User_5 = lazy(()=> import('../../views/user/user_5/index'))
+const User_6 = lazy(()=> import('../../views/user/user_6/index'))
 export default[
   {
     path: '/user',
@@ -33,6 +34,11 @@ export default[
         path: 'user_5',
         element: <User_5></User_5>,
         meta:{title:'用户管理_5'}
+      },
+      {
+        path: 'user_6',
+        element: <User_6></User_6>,
+        meta:{title:'用户管理_6'}
       },
     ]
   }
