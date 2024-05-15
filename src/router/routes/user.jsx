@@ -8,37 +8,37 @@ const User_6 = lazy(()=> import('../../views/user/user_6/index'))
 export default[
   {
     path: '/user',
-    meta:{title:'用户管理'},
+    meta:{title:'用户管理',auth:'user'},
     children:[
       {
         path: 'user_1',
         element: <User_1></User_1>,
-        meta:{title:'用户管理_1'}
+        meta:{title:'用户管理_1',auth:'user_1'}
       },
       {
         path: 'user_2',
         element: <User_2></User_2>,
-        meta:{title:'用户管理_2'}
+        meta:{title:'用户管理_2',auth:'user_2'}
       },
       {
         path: 'user_3',
         element: <User_3></User_3>,
-        meta:{title:'用户管理_3'}
+        meta:{title:'用户管理_3',auth:'user_3'}
       },
       {
         path: 'user_4',
         element: <User_4></User_4>,
-        meta:{title:'用户管理_4'}
+        meta:{title:'用户管理_4',auth:'user_4'}
       },
       {
         path: 'user_5',
         element: <User_5></User_5>,
-        meta:{title:'用户管理_5'}
+        meta:{title:'用户管理_5',auth:'user_5'}
       },
       {
         path: 'user_6',
         element: <User_6></User_6>,
-        meta:{title:'用户管理_6'}
+        meta:{title:'用户管理_6',auth:'user_6'}
       },
     ]
   }
