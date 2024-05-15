@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { Skeleton } from 'antd';
 import { DesktopOutlined } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { Breadcrumb, Layout, Menu, theme, Watermark } from 'antd';
 const { Content, Sider, Footer } = Layout;
 import Header from '../components/Header/index'
 import { useSelector } from 'react-redux'
@@ -30,23 +30,23 @@ const getMenu = (list) => {
 const getBreadcrumb = (url, source = []) => {
   const arr = [];
   const routeName = url.split('/').slice(1)
-  if(routeName.length === 1) {    
+  if (routeName.length === 1) {
     source.forEach(i => {
       const obj = {}
-      if('/' + routeName[0] === i.name) {
+      if ('/' + routeName[0] === i.name) {
         obj.title = i.title
         arr.push(obj)
       }
     })
-  }else {
+  } else {
     source.forEach(i => {
-      if(i.name === '/' + routeName[0]) {
+      if (i.name === '/' + routeName[0]) {
         const obj = {}
         obj.title = i.title
         arr.push(obj)
         i.children.forEach(c => {
           const obj = {}
-          if(c.name ===  routeName[1]) {
+          if (c.name === routeName[1]) {
             obj.title = c.title
             arr.push(obj)
           }
@@ -80,10 +80,6 @@ const App = () => {
     items = getMenu(menu)
     braItems = getBreadcrumb(pathname, menu)
   })
-  useEffect(() => {
-    console.log(getBreadcrumb(pathname, menu))
-  }, [])
-
   return (
     <Layout
       style={{
@@ -111,18 +107,24 @@ const App = () => {
             items={braItems}
           >
           </Breadcrumb>
-          <div
-            style={{
-              padding: [0, 12],
-              background: colorBgContainer,
-              borderRadius: borderRadiusLG,
-              height: 'calc(100% - 50px)'
-            }}
+          <Watermark
+          style={{width: '100%', height: '100%'}}
+            image="https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*lkAoRbywo0oAAAAAAAAAAAAADrJ8AQ/original"
           >
-            <React.Suspense fallback={<Skeleton active />}>
-              <Outlet></Outlet>
-            </React.Suspense>
-          </div>
+            <div
+              style={{
+                padding: [0, 12],
+                background: colorBgContainer,
+                borderRadius: borderRadiusLG,
+                height: 'calc(100% - 50px)'
+              }}
+            >
+              <React.Suspense fallback={<Skeleton active />}>
+                <Outlet></Outlet>
+              </React.Suspense>
+            </div>
+          </Watermark>
+
         </Content>
         <Footer
           style={{
